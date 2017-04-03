@@ -34,9 +34,9 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-        ])
+        ]);
 
-        session()->flash('success', '欢迎，您将开始一段新的旅程！')
-        return redirect()->route('user.show', [$user]);
+        session()->flash('success', '欢迎，您将开始一段新的旅程！');
+        return redirect()->route('users.show', [$user]);
     }
 }
