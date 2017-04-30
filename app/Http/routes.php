@@ -24,4 +24,4 @@ resource('users', 'UsersController');
 
 get('login', 'SessionsController@create')->name('login');
 post('login', 'SessionsController@store')->name('login');
-delete('logout', 'SessionsController@destory')->name('logout');
+delete('logout', 'SessionsController@destroy')->name('logout');

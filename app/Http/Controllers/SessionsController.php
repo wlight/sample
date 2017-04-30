@@ -27,7 +27,7 @@ class SessionsController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->has('remember'))) {
             // 登录成功后的相关操作
             session()->flash('success', '欢迎回来！');
             return redirect()->route('users.show', [Auth::user()]);
@@ -38,5 +38,12 @@ class SessionsController extends Controller
         }
 
         return;
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+        session()->flash('success', '您已经成功退出!');
+        return redirect('login');
     }
 }
