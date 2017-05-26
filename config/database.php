@@ -68,10 +68,10 @@ return [
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => $db_config('host'),
-            'database' => $db_config('database'),
-            'username' => $db_config('username'),
-            'password' => $db_config('password'),
+            'host'     => $db_config['host'],
+            'database' => $db_config['database'],
+            'username' => $db_config['username'],
+            'password' => $db_config['password'],
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
