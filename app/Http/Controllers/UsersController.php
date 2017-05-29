@@ -37,7 +37,8 @@ class UsersController extends Controller
     public function show ($id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        $statuses = $user->statuses()->orderBy('created_at', 'desc')->paginate(30);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     public function store (Request $request)
@@ -98,7 +99,7 @@ class UsersController extends Controller
         return back();
     }
 
-    public function sendEmailConfirmtionTo($user)
+    protected function sendEmailConfirmationTo($user)
     {
         $view = 'emails.confirm';
     // compact() 函数创建一个由参数所带变量组成的数组。如果参数中存在数组，该数组中变量的值也会被获取，
